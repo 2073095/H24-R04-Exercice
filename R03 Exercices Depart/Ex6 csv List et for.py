@@ -1,7 +1,7 @@
 import csv
 import os                             # N'enlevez pas ces lignes.
 os.chdir(os.path.dirname(__file__))   # Elles permettent de se positionner dans le répertoire de ce script
-
+os.chdir("csvs")
 
 
 # Tu as toujours rêvé de travailler un jour pour le CH
@@ -17,13 +17,14 @@ os.chdir(os.path.dirname(__file__))   # Elles permettent de se positionner dans 
 #  Des instructions détaillées sont données plus bas
 
 
-with open('csvs/Ex5 Stages.csv', 'r', encoding='utf-8') as f:
-    csv_reader = csv.reader(f)
-    with open('csvs/Ex5 Stages TI.csv', 'w', encoding='utf-8', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file)
-        csv_writer.writerow(next(csv_reader))
+with open("Ex6 Competences.csv", encoding='utf-8') as csv_file_reader:
+    csv_reader = csv.reader(csv_file_reader, delimiter='/')
+    with open('Ex6 Compétences Exiges.csv', 'w', encoding='utf-8') as csv_file_writer:
+        csv_writer = csv.writer(csv_file_writer, delimiter='/', lineterminator='\n')
+        csv_writer.writerow(["Compétences", "Niveau", "Exigences"])
+        next(csv_reader)
         for line in csv_reader:
-            if line[1] in ['TI']:
+            if line[2] in ["Exigé"]:
                 csv_writer.writerow(line)
 
 

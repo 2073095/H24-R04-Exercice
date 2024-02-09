@@ -2,7 +2,7 @@ import os                             # N'enlevez pas ces lignes.
 os.chdir(os.path.dirname(__file__))   # Elles permettent de se positionner dans le répertoire de ce script
 
 # Importez csv
-
+import csv
 
  
 
@@ -18,21 +18,19 @@ os.chdir(os.path.dirname(__file__))   # Elles permettent de se positionner dans 
 
 #         Si besoin, des instructions détaillées sont données plus bas
 
+liste_des_jeux = []
 
+with open("csvs/Ex7 Lan Party.csv", "r", encoding="utf-8") as csv_file_reader:
+    csv_reader = csv.reader(csv_file_reader, delimiter=";")
+    next(csv_reader)
+    for line in csv_reader:
+        for jeu in line[1:]:
+            if jeu not in liste_des_jeux:
+                liste_des_jeux.append(jeu)
 
+liste_des_jeux.sort()
 
-
-
-
-
-
-
-
-
-
-
-
-
+print(f"Les jsux disponnibles sont : {liste_des_jeux}")
 
 
 

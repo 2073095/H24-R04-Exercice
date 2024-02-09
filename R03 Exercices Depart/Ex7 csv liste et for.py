@@ -1,4 +1,4 @@
-import csv  # noqa: F401
+import csv
 import os                             # N'enlevez pas ces lignes.
 os.chdir(os.path.dirname(__file__))   # Elles permettent de se positionner dans le répertoire de ce script
 
@@ -15,7 +15,15 @@ os.chdir(os.path.dirname(__file__))   # Elles permettent de se positionner dans 
 #          Imprimez la liste des Lan Party dans lesquels votre jeu préféré est parmi leurs Tops
 # 
 #          Aucune instruction détaillée n'est donnée plus bas
-
+with open("csvs/Ex7 Lan Party.csv", encoding="utf-8") as csv_file_reader:
+    csv_reader = csv.reader(csv_file_reader, delimiter=';')
+    with open("csvs/Ex7 Lan Party Valorant", "w", encoding="utf-8") as csv_file_writer:
+        csv_writer = csv.writer(csv_file_writer, delimiter=';', lineterminator="\n")
+        csv_writer.writerow(["Lan Party" , "Top 1" , "Top 2" , "Top 3"])
+        next(csv_reader)
+        for line in csv_reader:
+            if "Valorant" in line:
+                csv_writer.writerow(line)
 
 
 
