@@ -5,7 +5,7 @@ info_client = {"id":0,"prenom":"Hélène","nom":"Boucher","solde":831600}
 print(f"Q1{80*'_'}")
 # Q1: Affichez le prenom et le nom dans le terminal
 #     Résultat attendu dans le terminal : Q1: Bonjour Hélène Boucher ! 
-
+print(f"Bonjour {info_client['prenom']} {info_client['nom']} ! ")
 
 
 
@@ -25,7 +25,12 @@ print(f"Q2{80*'_'}")
 # Q2: Pour aller chercher la liste de tous les prenom, nom de cette liste, il faudra faire une boucle
 #     Regardez ce que vous avez appris sur les listes pour changer la liste en un str
 #     Résultat attendu dans le terminal : Q2: Voici la liste des clients: Hélène Boucher, Thérèse Tessier, Benjamin Savard, Jean Tremblay, #Hugues Pelletier
+message ="Voici la liste des clients:"
+for personnes in donnees_json:
+    clients = personnes['prenom'] + personnes["nom"]
+    message += clients + ", " 
 
+print(message[:-2])
 
 
 
@@ -35,5 +40,4 @@ print(f"Q3{80*'_'}")
 # Si je veux avoir le solde moyen de tous mes clients, je vais devoir en premier calculer le solde total
 # Et après, diviser le solde total par le nombre de clients
 #       Résultat attendu dans le terminal:  Q3 Le solde moyen de mes clients est: 3773.6
-
 
