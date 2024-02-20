@@ -23,7 +23,7 @@ for index in range(10):
 # Dans le terminal la réponse commence par: " Q1: Voici la liste: ...."  #
 print(f"Q1{80*'_'}")
 
-
+print (f"Voici la liste: {liste_chiffres}")
 
 
 # Q2                                                                                                             #
@@ -31,7 +31,7 @@ print(f"Q1{80*'_'}")
 # Dans le terminal la réponse doit être: "Q2: Premier chiffre de la liste : X."      X variant selon votre liste #
 print(f"Q2{80*'_'}")
 
-
+print (f"Premier chiffre de la liste : {liste_chiffres[0]}")
 
 # Q3                                                                                                             #
 # Faites le code pour afficher si oui ou non le premier chiffre de la liste est supérieur ou égal à 100          #
@@ -40,14 +40,22 @@ print(f"Q2{80*'_'}")
 #           la réponse serait: "Q3: Le chiffre 50 n'est pas supérieur ou égal à 100"                             #
 print(f"Q3{80*'_'}")
 
-
+if liste_chiffres[0] >= 100:
+    print (f"Le chiffre {liste_chiffres[0]} est supérieur ou égal à 100")
+elif liste_chiffres[0] <= 100:
+    print (f"Le chiffre {liste_chiffres[0]} n'est pas supérieur ou égal à 100")
 
 # Q4                                                                                                             #
 # Faites le code pour afficher si le dernier nombre est inférieur à 300, égal à 300 ou, s'il est supérieur à 300
 # Faites un message approprié selon le cas. Vous DEVEZ utiliser le if... elif... else     #
 print(f"Q4{80*'_'}")
 
-
+if liste_chiffres[-1] < 300:
+    print (f"Le chiffre {liste_chiffres[-1]} est inférieur à 300")
+elif liste_chiffres[-1] == 300:
+    print (f"Le chiffre {liste_chiffres[-1]} est égale à 300")
+else:
+    print (f"Le chiffre {liste_chiffres[-1]} est supérieur à 300")
 
 
 # Q5 Maintenant on va compter le nombre de chiffres inférieurs à 100 qu'il y a dans la liste
@@ -60,6 +68,11 @@ print(f"Q4{80*'_'}")
 #           la réponse serait: "Q5: Il y a dans la liste 3 chiffres inférieurs à 100"                             #  
 print(f"Q5{80*'_'}")
 
+compteur = 0
+for int in liste_chiffres:
+    if int < 100:
+        compteur += 1
+print (f"Il y a dans la liste {compteur} chiffres inférieurs à 100")
 
 
 #  Q6                                                                                                               #
@@ -72,7 +85,10 @@ print(f"Q5{80*'_'}")
 #  variable avec un nombre aléatoire au début de cet exercice                                                       #
 print(f"Q6{80*'_'}")
 
-
+un_autre_chiffre_aleatoire = random.randint(500,1000)
+nouvelle_liste = []
+for index in range(10):
+    liste_chiffres.append(random.randint(500,1000))
 
 # Q7                                                                                                             #
 # Copiez votre code précédent et changez-le pour ne pas juste compter le nombre de chiffres entre 300 et 800 

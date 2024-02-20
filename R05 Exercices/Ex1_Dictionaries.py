@@ -40,4 +40,8 @@ print(f"Q3{80*'_'}")
 # Si je veux avoir le solde moyen de tous mes clients, je vais devoir en premier calculer le solde total
 # Et après, diviser le solde total par le nombre de clients
 #       Résultat attendu dans le terminal:  Q3 Le solde moyen de mes clients est: 3773.6
+total = 0
 
+for personne in donnees_json:
+    total += int(personne['solde'])
+print(f"Le solde moyen de mes clients est: {total}")
