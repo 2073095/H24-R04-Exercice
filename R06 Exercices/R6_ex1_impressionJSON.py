@@ -13,7 +13,7 @@ donnees_clients = [{'city': 'San Antonio', 'street': 'Hunters Creek Dr', 'number
 
 # Q0 : importez le module json
 
-
+import json
 
 print(f"Q1{'_'*60}")
 #Q1 : 
@@ -21,8 +21,8 @@ print(f"Q1{'_'*60}")
 # Imprimez à nouveau cette liste, mais cette fois-ci de facons à ce qu'elle soit facilement lisible par l'être humain
 #       vous devez utiliser le module json, la fonction dumps, et le paramètre indent
 
-
-
+print(donnees_clients)
+print(json.dumps(donnees_clients, indent=4))
 
 
 
@@ -32,7 +32,8 @@ print(f"Q2{'_'*60}")
 # Notez bien qu'il ne s'agit pas d'un csv. Vous devez utilisé les méthode .write() ou writelines()
 
 with open("R6_ex_q2.json", "w", encoding="utf-8") as fichier_ecrire :
-    pass
+    fichier_ecrire.writelines(json.dumps(donnees_clients[0], indent=4))
+    
 
 
 print(f"Q3{'_'*60}")
@@ -44,9 +45,14 @@ print(f"Q3{'_'*60}")
 #       3 - L'addresse complète dans une seule clef "addresse"
 #               par ex le premier client serait : "addresse" : 'San Antonio, 6454 Hunters Creek Dr, 98234-1734'
 #               je conseil d'utiliser un f-string ici
-
-
+nouvelle_liste = [{'id':1, 'name': {'firstname': 'don', 'lastname': 'romer'}, 'addresse': f"{donnees_clients[0]['city']}, {donnees_clients[0]['number']} {donnees_clients[0]['street']}, {donnees_clients[0]['zipcode']}"},
+                   {'id':2, 'name': {'firstname': 'derek', 'lastname': 'powell'}, 'addresse': f"{donnees_clients[1]['city']}, {donnees_clients[1]['number']} {donnees_clients[1]['street']}, {donnees_clients[1]['zipcode']}"}, 
+                   {'id':3, 'name': {'firstname': 'david', 'lastname': 'russell'}, 'addresse': f"{donnees_clients[2]['city']}, {donnees_clients[2]['number']} {donnees_clients[2]['street']}, {donnees_clients[2]['zipcode']}"}]
+print(json.dumps(nouvelle_liste, indent=4))
 
 print(f"Q4{'_'*60}")
 #Q4 : 
 # Enregistrez cette nouvelle liste de dictionnaires dans un fichier nommé : "clients_simplifiés"
+
+with open("clients_simplifiés", "w", encoding="utf-8") as json_file_writer:
+    json_file_writer.writelines(json.dumps(nouvelle_liste, indent=4))
