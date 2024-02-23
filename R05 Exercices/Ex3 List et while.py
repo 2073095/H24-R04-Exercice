@@ -26,6 +26,24 @@
 
 
 
+total = 0
+compteur = 0
+while compteur < 5:
+   nb = int(input("entrer cinq chiffre entre 400 et 800!"))
+   if 400 <= nb <= 800:
+       print(f"Merci vous avez entré le chiffre {nb}, qui est entre 400 et 800 comme demandé.")
+       total += nb
+       compteur += 1
+   else:
+       print(f"Vous avez entré {nb}. On a besoin de 5 nombres entre 400 et 800. SVP recommencez.")
+print(f"Merci vous avez entré 5 chiffres entre 400 et 800")
+moyenne = total / compteur
+print(f"Le total des chiffres entrés est de {total}")
+print(f"La moyenne de ces chiffres est de {moyenne}")
+
+
+
+
 
 
 # Q2  Devinez la couleur qu'on veut:
