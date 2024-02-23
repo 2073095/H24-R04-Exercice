@@ -87,8 +87,16 @@ print(f"Q6{80*'_'}")
 
 un_autre_chiffre_aleatoire = random.randint(500,1000)
 nouvelle_liste = []
-for index in range(10):
-    liste_chiffres.append(random.randint(500,1000))
+for index in range(5):
+    nouvelle_liste.append(random.randint(500,1000))
+nouvelle_liste.extend(liste_chiffres)
+
+chiffre = 0
+
+for int in nouvelle_liste:
+    if int >= 300 and int <= 800:
+        chiffre += 1
+print (f"Il y a dans la liste {chiffre} chiffres entre 300 et 800")
 
 # Q7                                                                                                             #
 # Copiez votre code précédent et changez-le pour ne pas juste compter le nombre de chiffres entre 300 et 800 
@@ -102,3 +110,15 @@ for index in range(10):
 #                         La moyenne de ces chiffres est de 300"                                                 # 
 print(f"Q7{80*'_'}")
 
+total = 0
+chiffre = 0
+
+for int in nouvelle_liste:
+    total += int
+    if int >= 300 and int <= 800:
+        chiffre += 1
+total = sum(nouvelle_liste)
+moyenne = total / len(nouvelle_liste)
+print (f"Il y a dans la liste {chiffre} chiffres entre 300 et 800, pour un total de {total}. La moyenne de ces chiffres est de {moyenne}")
+
+print (nouvelle_liste)
