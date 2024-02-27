@@ -130,4 +130,4 @@ for notes_etudiants in liste_etudiants:
     dictionnaire = [{f"{notes_etudiants[0]} , {round(note_final)} , {réussite}"}]
     dictionnaire_final.append(dictionnaire)
 
-    print (dictionnaire_final)
+print (dictionnaire_final)
