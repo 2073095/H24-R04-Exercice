@@ -40,7 +40,7 @@ with open("resultats_evaluation.csv", encoding='utf-8')as csv_file:
         id.extend(note_examen)
         liste_etudiants.append(id)
 
-
+print(liste_etudiants)
 
 
 
@@ -64,15 +64,19 @@ with open("resultats_evaluation.csv", encoding='utf-8')as csv_file:
 #           - La moyenne de ces étudiants
 #           - La moyenne de tous les étudiants
 #           - Le taux de succès au cours (pourcentage d'étudiants ayant passé)
-dictionnaire_final = []
+
+dictionnaire = []
 
 passe = 0
 pas_passe = 0
+moyenne = 0
+note_final = 0
+moyenne_etudiants = 0 
 
 for notes_etudiants in liste_etudiants:
     moyenne_tp = 0
     moyenne_examen = 0
-    note_final = 0
+    
 
     for note_tp in notes_etudiants[1:6]:
         moyenne_tp += int(note_tp) / 5
@@ -82,6 +86,8 @@ for notes_etudiants in liste_etudiants:
 
     if moyenne_tp >= 60 and moyenne_examen >= 60:
         passe += 1
+        moyenne += (moyenne_examen + moyenne_tp) / 2
+        moyenne_passe = moyenne / passe
 
     else:
         pas_passe += 1
@@ -95,22 +101,14 @@ for notes_etudiants in liste_etudiants:
         elif moyenne_examen < moyenne_tp:
             note_final = moyenne_examen
 
+
     else:
         note_final = (moyenne_examen + moyenne_tp) / 2
-
-    if note_final >= 60:
-        réussite = "succès"
-
-    else:
-        réussite = "échec"
-
-    succes = (passe * 100) / (pas_passe + passe)
+    moyenne_etudiants += note_final/ len(liste_etudiants)
+   
 
     
-
-
-
-
+    
 
 
 
@@ -127,7 +125,13 @@ for notes_etudiants in liste_etudiants:
 # Une fois cette liste de dictionnaire obtenue, imprimez-la dans le terminal. 
 
 
-    dictionnaire = [{f"{notes_etudiants[0]} , {round(note_final)} , {réussite}"}]
-    dictionnaire_final.append(dictionnaire)
+    succes = (passe * 100) / len(liste_etudiants)
 
-print (dictionnaire_final)
+    dictionnaire_2 = {"id": notes_etudiants[0], "note": round(note_final,2) , "echec": note_final < 60}
+    dictionnaire.append(dictionnaire_2)
+
+print (f"{passe} étudiants ont passé le cours")
+print (f"La moyenne de ces étudiants est de : {round(moyenne_passe,2)}")
+print (f"La moyenne de tous les étudiants est de : {round(moyenne_etudiants,2)}")
+print (f"Le taux de succès est de : {round(succes,2)}")
+print (dictionnaire)
