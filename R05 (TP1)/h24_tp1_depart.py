@@ -33,11 +33,12 @@ with open("resultats_evaluation.csv", encoding='utf-8')as csv_file:
     for i in range(2): next(csv_reader)
     #next(csv_reader)
     for line in csv_reader:
-        liste = line[3:]
+        note_tp = line[3:8]
+        note_examen = line[8:]
         id = [line[0]]
-        id.extend(liste)
+        id.extend(note_tp)
+        id.extend(note_examen)
         liste_etudiants.append(id)
-    print(liste_etudiants)
 
 
 
@@ -63,7 +64,47 @@ with open("resultats_evaluation.csv", encoding='utf-8')as csv_file:
 #           - La moyenne de ces étudiants
 #           - La moyenne de tous les étudiants
 #           - Le taux de succès au cours (pourcentage d'étudiants ayant passé)
+dictionnaire_final = []
 
+passe = 0
+pas_passe = 0
+
+for notes_etudiants in liste_etudiants:
+    moyenne_tp = 0
+    moyenne_examen = 0
+    note_final = 0
+
+    for note_tp in notes_etudiants[1:6]:
+        moyenne_tp += int(note_tp) / 5
+
+    for note_examen in notes_etudiants[6:9]:
+        moyenne_examen += int(note_examen) / 3
+
+    if moyenne_tp >= 60 and moyenne_examen >= 60:
+        passe += 1
+
+    else:
+        pas_passe += 1
+    
+
+    if moyenne_tp < 60 or moyenne_examen < 60:
+
+        if moyenne_tp < moyenne_examen:
+            note_final = moyenne_tp
+
+        elif moyenne_examen < moyenne_tp:
+            note_final = moyenne_examen
+
+    else:
+        note_final = (moyenne_examen + moyenne_tp) / 2
+
+    if note_final >= 60:
+        réussite = "succès"
+
+    else:
+        réussite = "échec"
+
+    succes = (passe * 100) / (pas_passe + passe)
 
     
 
@@ -86,3 +127,7 @@ with open("resultats_evaluation.csv", encoding='utf-8')as csv_file:
 # Une fois cette liste de dictionnaire obtenue, imprimez-la dans le terminal. 
 
 
+    dictionnaire = [{f"{notes_etudiants[0]} , {round(note_final)} , {réussite}"}]
+    dictionnaire_final.append(dictionnaire)
+
+    print (dictionnaire_final)
