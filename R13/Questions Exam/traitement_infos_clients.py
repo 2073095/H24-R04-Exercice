@@ -18,7 +18,19 @@ cpt_chine = 0
 cpt_japon = 0
 cpt_asie = 0
 
+for voyageur in donnees_voyage:
+    if "Chine" in voyageur['pays_visite'] or "Japon" in voyageur['pays_visite']:
+        cpt_asie += 1
+    if "Chine" in voyageur['pays_visite']:
+        cpt_chine += 1
+    if "Japon" in voyageur['pays_visite']:
+        cpt_japon += 1
+    
 
+print(f"nbr voyage chine : {cpt_chine}")
+print(f"nbr voyage japon : {cpt_japon}")
+print(f"nbr voyage asie : {cpt_asie}")
+print(f"{cpt_asie/len(donnees_voyage)*100}% en asie")
 
 
 
@@ -28,4 +40,9 @@ cpt_asie = 0
 # Question Bonus : 
 # Obtenez et imprimez une liste de tous les pays visités par des voyageurs.
 # Cette liste ne devrait pas contenir de duplicatas ( chaque pays apparait une seule fois )
-
+liste_pays_disponibles = []
+for voyageur in donnees_voyage:
+    for pays in voyageur["pays_visite"]:
+        if pays not in liste_pays_disponibles:
+            liste_pays_disponibles.append(pays)
+print(f"voici les pays disponibles aux voyageurs : \n", liste_pays_disponibles)

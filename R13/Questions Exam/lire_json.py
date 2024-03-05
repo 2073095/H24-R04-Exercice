@@ -13,3 +13,13 @@ os.chdir(os.path.dirname(__file__))
 
 nom_fichier = "json_a_lire.json"
 list_produits_electronics = []
+
+with open(nom_fichier, "r") as json_reader:
+    texte = json_reader.read()
+    donnee_produits = json.loads(texte)
+
+for produit in donnee_produits: 
+    if produit["category"] == "electronics":
+        list_produits_electronics.append(produit)
+
+print(list_produits_electronics)

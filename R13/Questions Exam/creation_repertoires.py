@@ -31,3 +31,21 @@ groupe_cours_prog2 = [  ['2273383', '1010', 'Carrier', 'Alexandre', '420.BU'],
 #   puis créer un répertoire pour chaque groupe,
 #   et dans ces répertoires, créer un répertoire par étudiant.
 
+#os.makedirs("prog2")
+#os.makedirs("prog2/1010")
+#os.makedirs("prog2/1080")
+
+#for etudiant in groupe_cours_prog2:
+#    nom_rep = f"{etudiant[3]} {etudiant[2]}"
+#    if etudiant[1] == "1010":
+#        os.makedirs(f"prog2/1010/{nom_rep}")
+#    else:
+#        os.makedirs(f"prog2/1080/{nom_rep}")
+
+
+        #OU
+
+
+for etudiant in groupe_cours_prog2:
+    nom_rep = f"{etudiant[3]} {etudiant[2]}"
+    os.makedirs(f"prog2/{etudiant[1]}/{nom_rep}")
