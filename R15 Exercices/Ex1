@@ -1,0 +1,5 @@
+class Personne:
+    def __init__(self, pNom, pPrenom, pDate_naissance)
+        self.pNom = nom
+        self.pPrenom = prenom
+        self.pDate_naissance = date_naissance

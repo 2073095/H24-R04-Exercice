@@ -1,0 +1,24 @@
+import random
+import datetime
+
+class Inscription:
+    def __init__(self, alias, role):
+        self.date_inscription = datetime.date.today()
+        self.alias = alias
+        self.role = role
+        self.cout = 45
+        self.no_confirmation = 0
+
+    def confirmer(self):
+        self.no_confirmation = random.randint(1, 100000)
+        print (f"Félicitation {self.alias}! Vous êtes inscrit dans le rôle de {self.role}. Voici votre numéro de confirmation: {self.no_confirmation}")
+    
+    def canceller(self):
+        print (f"Votre inscription au numéro de confirmation: {self.no_confirmation} a été cancellée")
+
+test_inscription = Inscription("Gandalf le magnifique", "Magicien")
+test_inscription2 = Inscription("Vince Le ténébreux", "Prêtre")
+
+test_inscription.confirmer()
+test_inscription2.confirmer()
+test_inscription2.canceller()

@@ -1,24 +1,26 @@
-
 class Compte:
-    def __init__(self,pNo_compte, type, nip):
-        self.no_compte = pNo_compte
-        self.type_compte = type
-        self.nip_client = nip
+    def __init__(self, no_compte, type_compte, nip_client):
+        self.no_compte = no_compte
+        self.type_compte = type_compte
+        self.nip_client = nip_client
         self.solde = 0
-
+    
     def deposer(self, montant):
         self.solde += montant
 
     def retirer(self, montant):
-        if self.solde > montant:
+        if (self.solde > montant):
             self.solde -= montant
         else:
-            print(f"Votre solde est de {self.solde}. Ce qui est inférieur au montant de {montant}$ que vous voulez retirer")
+            print(f"votre solde est {self.solde}. Ce qui est inférieur au montant de {montant}$ que vous voulez retirer.")
+    
+test_compte = Compte(12345678, "chèque", 888888888) 
+test_compte2 = Compte(23456789, "épargne", 888888888)
 
-compte_test = Compte(168231, "épargne", 123456)
-
-compte_test.deposer(40000)
-
-compte_test.retirer(100000)
-
-print()
+print (test_compte.solde)
+test_compte.retirer(100)
+test_compte.deposer(1000)
+test_compte.deposer(2000)
+print (test_compte.solde)
+test_compte2.deposer(5000)
+print (test_compte2.solde)
