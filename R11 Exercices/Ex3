@@ -1,0 +1,10 @@
+class Voiture:
+    def __init__(self, marque, modele, année, kilometrage, couleur, prix, etat='neuf'):
+        self.marque = marque
+        self.modele = modele
+        self.année = année
+        self.kilometrage = kilometrage
+        self.couleur = couleur
+        self.prix = prix
+        self.état = etat
+    
