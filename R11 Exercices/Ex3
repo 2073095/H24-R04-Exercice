@@ -1,10 +1,18 @@
 class Voiture:
-    def __init__(self, marque, modele, année, kilometrage, couleur, prix, etat='neuf'):
+    def __init__(self, marque, modele, annee, kilometrage, couleur, prix, etat='neuf'):
         self.marque = marque
         self.modele = modele
-        self.année = année
+        self.annee = annee
         self.kilometrage = kilometrage
         self.couleur = couleur
         self.prix = prix
-        self.état = etat
+        self.etat = etat
     
+    def imprimer_infos(self):
+        print(f"{self.marque} {self.modele} {self.annee} de couleur {self.couleur}, avec seulement {self.kilometrage} km. Pour un prix raisonnable de {self.prix}$. Dans un état {self.etat}")
+    
+voiture1 = Voiture('Toyota', 'Tercel', 1972, 12888888, 'rouge', 123, 'superbe')
+voiture2 = Voiture('Honda', 'Civic', 2007, 360000, 'bleu', 1064)
+
+voiture1.imprimer_infos()
+voiture2.imprimer_infos()
