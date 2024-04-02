@@ -2,8 +2,9 @@ from os import chdir
 from os.path import dirname
 from csv import reader
 from .Terrain import Terrain
+from .Joueur import Joueur
 
-class Banque:
+class Banque(Joueur):
     _existe_deja = False    # Le '_' au début de la variable indique qu'il s'agit d'une variable privé.
     def __init__(self) -> None:
         if Banque._existe_deja == True :
