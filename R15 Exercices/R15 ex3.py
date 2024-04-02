@@ -33,4 +33,6 @@ film_Titanic = Film('Titanic', '19 décembre 1997')
 film_Abyss = Film('Abyss', '9 août 1989')
 film_Avatar = Film('Avatar', '18 décembre 2009')
 
-realisateur_James_Cameroun = Realisateur('Cameroune', 'James', '16 août 1954', )
+realisateur_James_Cameroun = Realisateur('Cameroune', 'James', '16 août 1954', 1234, 'réalisateur', '2$', 'rien')
+
+print (realisateur_James_Cameroun)
