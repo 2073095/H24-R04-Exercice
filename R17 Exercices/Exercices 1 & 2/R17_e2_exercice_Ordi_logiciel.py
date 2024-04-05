@@ -12,21 +12,24 @@
 
 
 class Ordinateur:
-    processeur=None
-    memoire_vive=None
+    processeur='Ryzen 3600'
+    memoire_vive='16Go'
     def __init__(self,ID, adresseIP) -> None:
-        pass
+        self.ID = ID
+        self.adresseIP = adresseIP
+
     
-    def __str__(self) -> str:
+    def __str__(self, processeur, memoire_vive) -> str:
         pass
     
     @classmethod
     def upgrader_processeur(cls, nouveau_processeur) -> None:
-        pass
+        cls.processeur = nouveau_processeur
+        
     
     @classmethod
     def upgrader_memoire(cls, nouvelle_norme) -> None:
-        pass
+        cls.memoire_vive = nouvelle_norme
     
    
 class Poste_de_travail(Ordinateur):
@@ -45,4 +48,3 @@ class Poste_de_travail(Ordinateur):
     def imprimer_liste_logiciels(self) -> None:
         pass
     
-
