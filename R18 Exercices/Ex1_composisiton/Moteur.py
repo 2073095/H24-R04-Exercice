@@ -1,5 +1,8 @@
 class Moteur:
-    pass
+    def __init__(self, puissance) -> None:
+        self.puissance = puissance
+    
+    def demarer (self): pass
 
 class Moteur_Essence(Moteur):
     pass

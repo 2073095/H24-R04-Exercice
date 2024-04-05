@@ -16,7 +16,7 @@ class Banque(Joueur):
             self._charger_terrains(self)
             Banque._existe_deja = True
     
-    def _charger_terrains(self, path) :
+    def _charger_terrains(self) :
         chdir(dirname(__file__))
         with open("../Data/terrains.csv") as f_lu :
             csv_reader = reader(f_lu)

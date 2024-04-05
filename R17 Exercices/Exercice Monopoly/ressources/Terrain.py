@@ -3,6 +3,10 @@ class Terrain:
         self.nom = nom
         self.type_terrain = type_terrain
         self.couleur = couleur
-
-
+        self.espace = espace
+        self.coût = coût
+        self.hypothèque = hypothèque
+        self.cout_maison = cout_maison
+        self.locations = locations
+        self.prix_passage_actuel = self.locations[0]
 #nom,type_terrain,couleur,espace,coût,hypothèque,cout_maison,location_0,location_1,location_2,location_3,location_4,location_hotel
