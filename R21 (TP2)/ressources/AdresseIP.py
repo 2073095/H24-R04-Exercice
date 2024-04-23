@@ -1,9 +1,29 @@
-class ErreurFormatIP : pass
+class ErreurFormatIP(ValueError): pass
 
 
 class AdresseIP :
-    def __init__(self, pAdresse_ip) -> None: pass
+    def __init__(self, valeur) -> None:
+        self._valeur = self.verifier_format_adresse(valeur)
 
+    @property
+    def valeur(self): 
+        return self._valeur
+        
+    @valeur.setter
+    def valeur(self, nouvelle_valeur): 
+        self._valeur = self.verifier_format_adresse(nouvelle_valeur)
+
+
+    @staticmethod
+    def verifier_format_adresse(self,ipadress:str) -> None:
+        adress = ipadress.split('.')
+        if len(adress) != 4:
+            raise ErreurFormatIP(f"L'adresse IP ({ipadress}) n'est pas séparé en 4 parties")
+        for ip in adress:
+            if 0 > int(ip) or int(ip) > 255:
+                raise ErreurFormatIP(f"L'adresse IP ({ipadress}) n'est pas valide")
+        return ipadress
+            
 
     def __str__(self) -> str :
         return self.valeur
