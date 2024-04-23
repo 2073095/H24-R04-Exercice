@@ -1,4 +1,4 @@
-#TP2 par ........
+#TP2 par Gabriel Boyer
 
 import time
 if __name__ == '__main__' : from Composantes import *
@@ -6,9 +6,9 @@ else :                      from .Composantes import *
 
 
 class SousReseau:
-    def __init__(self, _nom:str, _ls_composantes:list[Composante]):
-        self._nom = _nom
-        self._ls_composantes = _ls_composantes
+    def __init__(self, nom:str, ls_composantes:list[Composante]):
+        self._nom = nom
+        self._ls_composantes = ls_composantes
 
 
     @property
@@ -26,26 +26,44 @@ class SousReseau:
             return False
 
     def get_composante_par_ip(self, adress_ip_comp:str):
-        comp:Composante
-        for comp in self._ls_composantes:
-            if adress_ip_comp == str(comp.adresse_ip):
-                return comp
+        composante:Composante
+        for composante in self._ls_composantes:
+            if adress_ip_comp == str(composante.adresse_ip):
+                return composante
 
-    def ajouter_composante(self): pass
+    def ajouter_composante(self, composante_a_ajouter:Composante):
+        if composante_a_ajouter not in self._ls_composantes:
+            self._ls_composantes.append(composante_a_ajouter)
 
-    def enlever_composante(self): pass
+    def enlever_composante(self, composante_a_enlever:Composante):
+        if composante_a_enlever in self._ls_composantes:
+            self._ls_composantes.remove(composante_a_enlever)
 
 
 class Gestionnaire:
-    def __init__(self, nom, _reseau):
-        self.nom = nom
-        self._reseau = _reseau
+    def __init__(self, nom, reseau:SousReseau):
+        self._nom = nom
+        self._reseau = reseau
 
-    def tester_connexion(self): pass
+    @property
+    def nom(self): return self._nom
 
-    def tester_toutes_connexions(self): pass
+    @property
+    def reseau(self): return self._reseau
+    
 
-    def redemarrer_poster(self): pass
+    def tester_connexion(self, composante:Composante):
+        resultat_composante = composante.ping()
+        print(f"Le résultat de la composante est:{resultat_composante}")
+
+    def tester_toutes_connexions(self): 
+        for composante_reseau in self._reseau._ls_composantes:
+            self.tester_connexion(composante_reseau)
+
+    def redemarrer_station(self, station:Poste):
+        station.fermer()
+        time.sleep(1)
+        station.ouvrir()
 
 
 if __name__ == "__main__" :

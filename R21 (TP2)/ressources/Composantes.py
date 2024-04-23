@@ -1,4 +1,4 @@
-#TP2 par ........
+#TP2 par Gabriel Boyer
 #
 from abc import ABC,abstractmethod
 import subprocess as sb

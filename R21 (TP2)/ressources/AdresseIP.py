@@ -1,3 +1,5 @@
+#TP2 par Gabriel Boyer
+
 class ErreurFormatIP(ValueError): pass
 
 
@@ -15,7 +17,7 @@ class AdresseIP :
 
 
     @staticmethod
-    def verifier_format_adresse(self,ipadress:str) -> None:
+    def verifier_format_adresse(ipadress:str) -> None:
         adress = ipadress.split('.')
         if len(adress) != 4:
             raise ErreurFormatIP(f"L'adresse IP ({ipadress}) n'est pas séparé en 4 parties")
