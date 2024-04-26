@@ -6,25 +6,25 @@ print("\nTests 1, instanciation d'objets ")
 # Leurs adresses IP doivent être : "208.67.222.222","255.67.223.223", et "255.67.223.223"
 # Les valeurs de masque_sous_reseau et adresse_passerelle ne sont pas vérifiées dans ce TP
 
-poste1 = Poste()
-poste2 = Poste()
-poste3 = Poste()
+poste1 = Poste('Ordinateur1', '208.67.222.222', '192.168.222.1','255.255.255.0', 'Longueuil')
+poste2 = Poste('Ordinateur2', '255.67.223.223', '192.168.223.1', '255.255.255.0', 'Montreal')
+poste3 = Poste('Ordinateur3', '255.67.223.223', '255.67.223.1', '255.255.255.0', 'Québec')
 
 
 # Créez 1 instance de la classe Routeur avec l'adresse IP "8.8.8.8" et un nb_port de 8
-routeur1 = Routeur()
+routeur1 = Routeur('router1', '8.8.8.8', '192.168.21.1', '255.255.255.0', 'Montréal', 8, None)
 # Créez 1 instance de la classe Routeur avec l'adresse IP "8.8.8.8" et un nb_port de 2
-routeur2 = Routeur()
+routeur2 = Routeur('router2', '8.8.8.8', '255.168.21.1', '255.255.255.0', 'Québec', 2, None)
 
 
 # Créez 1 instance de la classe SousReseau. 
 # Elle doit contenir deux des composantes : le poste1, et une le routeur1 que vous venez de créer.
-reseau1 = SousReseau()
+reseau1 = SousReseau('network',[poste1, routeur1])
 
 # Créez 1 instance de la classe Gestionnaire.
 # Le nom de la classe Gestion doit suivre le format "gestion_nom-de-famille_prenom". Avec bien sûr, vôtre nom et prénom.
 # L'attribut nom de cette instance doit être "Gestionnaire_XXXXXX" où les X correspondent à votre code permanent.
-gestion_CHANGER_LE_NOM = Gestionnaire()
+gestion_Boyer_Gabriel = Gestionnaire('Gestionnaire_2073095', reseau1)
 
 
 #Test 2 : Postes
@@ -32,14 +32,29 @@ print("\nTests 2, Postes : ")
 #Test 2a : Testez que la première instance Poste est bien initialisée au stade fermé.
 print("T2a - ",end="")
 
-#print(f"SUCCÈS - La station {poste1.nom} est éteinte.")
-#print(f"ÉCHEC {'*'*10}")
+if poste1.est_allume == False:
+    print(f"SUCCÈS - La station {poste1.nom} est éteinte.")
+else:
+    print(f"ÉCHEC {'*'*10}")
+
 
 print("T2b - ",end="")
 #Test 2b : Utiliser la méthode ouvrir() et vérifiez que l'attribut "est_allume" à bien changer.
 
+poste1.ouvrir()
+if poste1.est_allume == True:
+    print(f"SUCCÈS - La station {poste1.nom} est allumé.")
+else:
+    print(f"ÉCHEC {'*'*10}")
+
 print("T2c - ",end="")
 #Test 2c - Fermez cette même station et vérifiez qu'elle est fermée.
+
+poste1.fermer()
+if poste1.est_allume == False:
+    print(f"SUCCÈS - La station {poste1.nom} est éteinte.")
+else:
+    print(f"ÉCHEC {'*'*10}")
 
 
 print("T2d - ",end="")
